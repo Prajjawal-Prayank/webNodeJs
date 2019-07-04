@@ -13,7 +13,7 @@ input[type=text] {
   background: #f1f1f1;
 }
 
-/* Add a background color when the inputs get focus */
+/* Addding a background color when the inputs get focus */
 input[type=text]:focus{
   background-color: #ddd;
   outline: none;
@@ -35,7 +35,7 @@ input[type=text]:focus{
   opacity:1;
 }
 
-/* Extra styles for the cancel button */
+
 
 /* Add padding to container elements */
 .container {
@@ -49,8 +49,8 @@ input[type=text]:focus{
   z-index: 1; /* Sit on top */
   left: 8%;
   top: 15%;
-  width: 80%; /* Full width */
-  height: 60%; /* Full height */
+  width: 80%; 
+  height: 60%;
   overflow: auto; /* Enable scroll if needed */
   background-color: #474e5d;
   padding-top: 50px;
@@ -59,12 +59,12 @@ input[type=text]:focus{
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 3% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 3% auto 5% auto;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* Style the horizontal ruler */
+/* Styling the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;

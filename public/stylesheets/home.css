@@ -16,7 +16,7 @@ body{
 
 * {box-sizing: border-box;}
 
-/* Style the navbar */
+/* Styling the navbar */
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
@@ -24,12 +24,12 @@ body{
 }
 
 
-/* Style the input container */
+/* Styling the input container */
 .topnav .login-container {
   float: right;
 }
 
-/* Style the input field inside the navbar */
+/* Styling the input field inside the navbar */
 .topnav input[type=text],.topnav input[type=password] {
   padding: 6px;
   margin-top: 8px;
@@ -38,7 +38,7 @@ body{
   width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
 }
 
-/* Style the button inside the input container */
+/* Styling the button inside the input container */
 .topnav .login-container button {
   float: right;
   padding: 6px;
@@ -54,7 +54,7 @@ body{
   background: #ccc;
 }
 
-/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+/* Adding responsiveness - On small screens, display the navbar vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav .login-container {
     float: none;
@@ -125,7 +125,7 @@ hr {
   margin-left: 5px;
 }
 
-/* Set a style for all buttons */
+/* Setting a style for all buttons */
 .signup button {
   background-color: #4CAF50;
   color: white;
@@ -149,10 +149,7 @@ hr {
   width: 50%;
 }
 
-/* Add padding to container elements */
-/*.container {
-  padding: 16px;
-}*/
+
 
 /* Clear floats */
 .clearfix::after {
@@ -168,9 +165,8 @@ hr {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 60%; /* Full width */
-  height: 65%; /* Full height */
-   /* Enable scroll if needed */
+  width: 60%; 
+  height: 65%; 
   background-color: #474e5d;
   padding-top: 2%;
   margin-top: 5%;

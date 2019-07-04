@@ -1,7 +1,7 @@
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
 
-/* Style the tab */
+/* Styling the tab */
 .tab {
   float: left;
   border: 1px solid #ccc;
@@ -10,7 +10,7 @@ body {font-family: "Lato", sans-serif;}
   height: 600px;
 }
 
-/* Style the buttons inside the tab */
+/* Styling the buttons inside the tab */
 .tab button {
   display: block;
   background-color: inherit;
@@ -38,7 +38,7 @@ body {font-family: "Lato", sans-serif;}
   transition-timing-function:cubic-bezier(0.2,0.5,0.3,1);
 }
 
-/* Style the tab content */
+/* Styling the tab content */
 .tabcontent {
   float: left;
   padding-top: 30px;
@@ -98,7 +98,7 @@ input[type=text],input[type=password], textarea {
     margin-bottom: 25px;
   }
   
-  /* Set a style for all buttons */
+  /* Setting a style for all buttons */
   .form button {
     background-color: #4CAF50;
     color: white;
@@ -129,7 +129,7 @@ input[type=text],input[type=password], textarea {
  
   
   
-  /* Set a style for all buttons */
+  /* Setting a style for all buttons */
   .modal button {
     background-color: #4CAF50;
     color: white;
@@ -164,9 +164,8 @@ input[type=text],input[type=password], textarea {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 80%; /* Full width */
-    height: 65%; /* Full height */
-     /* Enable scroll if needed */
+    width: 80%; 
+    height: 65%;
     background-color: #474e5d;
     padding-top: 2%;
     margin-top: 5%;
@@ -176,7 +175,7 @@ input[type=text],input[type=password], textarea {
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 7% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 7% auto 15% auto; /* 7% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     height: 50%;

@@ -12,8 +12,8 @@ function myfunction(evt, name) {
     evt.currentTarget.className += " active";
   }
   
-  // Get the element with id="defaultOpen" and click on it
-  //document.getElementById("defaultOpen").click();
+  
+  
   
 
   if(code==1)

@@ -15,13 +15,13 @@ input[type=text] {
   background: #f1f1f1;
 }
 
-/* Add a background color when the inputs get focus */
+/* Addding a background color when the inputs get focus */
 input[type=text]:focus{
   background-color: #ddd;
   outline: none;
 }
 
-/* Set a style for all buttons */
+/* Setting a style for all buttons */
 .remove button {
   background-color: #4CAF50;
   color: white;
@@ -83,7 +83,7 @@ input[type=text]:focus{
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* Style the horizontal ruler */
+/* Styling the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;

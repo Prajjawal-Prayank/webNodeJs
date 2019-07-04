@@ -102,16 +102,15 @@ h1{
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 80%; /* Full width */
-  height: 65%; /* Full height */
-   /* Enable scroll if needed */
+  width: 80%; 
+  height: 65%; 
   background-color: #474e5d;
   padding-top: 2%;
   margin-top: 5%;
   margin-left: 10%;
 }
 
-/* Set a style for all buttons */
+/* Setting a style for all buttons */
 .modal button {
   background-color: #4CAF50;
   color: white;
@@ -134,7 +133,7 @@ h1{
 }
 
 
-/* Add padding to container elements */
+/* Addding padding to container elements */
 .container2 {
   padding: 16px;
 }

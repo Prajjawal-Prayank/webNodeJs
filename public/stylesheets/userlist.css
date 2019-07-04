@@ -19,7 +19,7 @@ input[type=text]:focus{
   outline: none;
 }
 
-/* Set a style for all buttons */
+/* Setting a style for all buttons */
 .activate button,.deactivate button,.remove button{
   background-color: #4CAF50;
   color: white;
@@ -37,7 +37,7 @@ input[type=text]:focus{
 
 
 
-/* Add padding to container elements */
+/* Adding padding to container elements */
 .container {
   padding: 16px;
 }

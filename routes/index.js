@@ -861,7 +861,7 @@ router.post('/remove_request',function(req,res){        //for deleting a notice 
 
 
 //-----------------------------------------------------------Moving Notices-----------------------------------------------------------//
-
+//d
 
 
 router.post('/move_snotice',function(req,res){

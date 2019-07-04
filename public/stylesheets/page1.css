@@ -1,0 +1,112 @@
+
+body{
+  background:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)) , url(/images/background3.jpg);
+}
+
+.head{
+  text-align: center;
+  font-size: 40px;
+}
+
+.main{
+  background: url(/images/background1.jpg);
+  height: 100%;
+  width: 80%;
+  margin-left: 8%;
+  margin-top: 3%;
+  background-color: green;
+  border: 20px solid brown;
+  border-radius: 5px;
+  padding-bottom: 5%;
+}
+
+.container1{         
+  position: relative;
+  width: 19%;
+  height: 17%;
+  margin-top: 10%;
+  margin-bottom: -21.2%;
+  margin-right: -40%;
+  padding: 50px;
+  border: 5px solid yellow;
+  border-radius: 3px;
+  background-color: #d2d2d2;
+}
+
+.container2 {         
+  position: relative;
+  width: 16.5%;
+  height: 12%;
+  margin-top: -19.5%;
+  margin-left: -40%;
+  padding: 50px;
+  border: 5px solid yellow;
+  border-radius: 3px;
+  background-color: #d2d2d2;
+}
+
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color:#008CBA ;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  opacity: .9;
+  transition: .5s ease;
+}
+
+.overlay2 {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  opacity: .9;
+  transition: .5s ease;
+}
+
+.container1:hover .overlay1 {
+  width: 100%;
+}
+
+.container2:hover .overlay2 {
+  width: 100%;
+  left: 0;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.logout{
+  float: right;
+  margin-right: 3%;
+  margin-top: 3%;
+  box-shadow: 8px 1px 1px 1px;
+}
+
+.logout:hover{
+  box-shadow: 0px 0px 0px 0px;
+  transition:.4s;
+}

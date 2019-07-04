@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Change Username</title>
+  <link rel="stylesheet" href="/stylesheets/change_username.css"></link>
+  <script>
+    
+  </script>
+</head>
+<body>
+<div >
+  <button class="back" onclick="location.replace('/admin')"><-Go Back</button>
+</div>
+
+<button class="logout" onclick="document.getElementById('id01').style.display='block'" style="float:right;">LogOut</button>
+
+<div id="id01" class="modal" >
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+      <form class="modal-content" action="/admin_logout">
+        <div class="container2">
+          <h1>LogOut</h1>
+          <p>Are you sure you want to log out?</p>          
+            <div class="clearfix2">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'"  class="cancel">Cancel</button>
+              <button type="submit" class="logOut" style="background-color: #f44336 ;width:50%; float:right;">LogOut</button>
+            </div>
+        </div>
+      </form>
+  </div>
+
+  <div class="changeUsername">
+    <img src="/images/avatar.png" class="avatar">
+    <h1>Change Username</h1>
+    <form method="post" action="/admin_changeUsername">
+      <p>New Username</p>
+      <input type="text" placeholder="Enter New Username" name="username" required>
+      <br><br><br>
+      <input type="submit" name="button" value="Change Username">
+    </form>
+  </div>
+</body>
+</head>
+</html>

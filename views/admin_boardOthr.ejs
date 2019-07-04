@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/stylesheets/admin_boardOthr.css">
+
+<script>
+var code=<%= code %>;
+check(code);
+
+
+function check(code)
+{
+  if(code==1)
+    alert('Invalid Subject.Please retry with correct subject.');
+  if(code==2)
+    alert('Notice successfully deleted.');  
+}
+</script>
+
+</head>
+<body>
+
+<button id="back" onclick="window.location.replace('/admin')"><-Go Back</button>
+
+<div class="remove">
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+  <form class="modal-content" id="dynamic" method="post" action="/remove_onotice" > <!-- action="/remove_snotice" -->
+    <div class="container">
+      <h1>Remove Notice</h1>
+      <hr>
+      <label ><b>The notice with the subject :-</b></label>
+      <input type="text" placeholder="Copy and paste subject of the notice to be removed" name="subject" disabled>
+      <input type="text" name="subject1" style="display: none;">
+
+      <p><b>will be removed.</b><br><br>Once removed ,the notice will be deleted permanently!</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" 
+        style="background-color: #4CAF50 ;width:50%; " class="cancelbtn">Cancel</button>
+        <button type="submit" class="remove" style="background-color: #f44336 ;width:50%; float:right;">Remove</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+<div class="notices">
+  <h3><%= title %></h3>
+      <ul>
+          <%
+          var body = '';
+          for (i = 0; i < notices.length; i++) 
+          {
+            body += '<button class="accordion" id="'+i+'">'+ notices[i].subject +'</button><div class="panel"><p>'+ notices[i].body +'<br><br>' ;
+                if(notices[i].path!="")
+                {
+                    var path= notices[i].path.slice(28);
+                    body+= '<a href="'+ path + '">Click Here</a> to see Attachment.' ;
+                }
+                body+='<button class="act" onclick="display('+i+')" style="width:auto;right: 0px;float:right;">Remove Notice</button>';
+                body+= '</p></div>';
+          }
+          %>
+          <%- body %>
+      </ul>
+</div>
+
+
+<script>
+
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+
+function display(i)
+{
+  document.getElementById('id01').style.display='block';
+  var id=i.toString();
+  dynamic.subject.value=document.getElementById(id).innerHTML;
+  dynamic.subject1.value=document.getElementById(id).innerHTML;
+}
+</script>
+
+</body>
+</html>

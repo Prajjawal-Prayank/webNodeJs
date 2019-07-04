@@ -1,0 +1,54 @@
+<html>
+
+<style type="text/css">
+
+body{
+  background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1));
+}
+
+.container{
+  background-color: #c3c2c1;
+  height: 50%;
+  width: 40%;
+  margin-top: 10%;
+  margin-left: 28%;
+  padding: 20px;
+}
+
+#head{
+  font-size: 45px;
+  color: white;
+}
+
+#text{
+  color: white;
+  font-size: 20px;
+}
+
+button{
+  border: none;
+  background-color: dodgerblue;
+  padding: 20px;
+}
+
+button:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:10px 10px 10px 10px;
+}
+
+button:active{
+  transform:translate(2px,2px);
+  box-shadow: 0px 0px 0px 0px ;
+}
+
+</style>
+
+
+<body>
+
+<div class="container">
+  <p id="head">OOPS!!!</p>
+  <p id="text">It seems that you are logged out of your accouont.Please login to continue.</p>
+  <button onclick="location.replace('/')">Go to Log In page</button>
+</div>
+</body>

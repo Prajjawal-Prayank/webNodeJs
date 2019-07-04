@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='/stylesheets/student_notice.css' />
+
+<script>
+  var code=<%= code %>;
+    check(<%= code %>);
+    function check(code)
+    {
+      if(code==1)
+        alert('Your request was successfully submitted.');
+    //  if(code==2)
+    //    alert('Username already Taken.Try a different one.');
+      if(code==3)
+        alert('Username Successfully updated');
+    //  if(code==4)
+    //    alert('Email id already registered'); 
+      if(code==5)
+        alert('Email id successfully updated'); 
+    //  if(code==6)
+    //    alert('Wrong old password');
+    //  if(code==7)
+    //    alert('Password and confirm password did not match');
+    //  if(code==8)
+    //    alert('New password is not a strong password');
+      if(code==9)
+        alert('Password successfully updated'); 
+    //  if(code==10)
+    //    alert('Not a valid email-id');   
+    }
+</script>
+
+</head>
+<body>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="location.replace('/notice')" ><- Go Back</button>
+  <button class="tablinks" onclick="myfunction(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="myfunction(event, 'Add')" id="add">Add Notice Request</button>
+  <button class="tablinks" onclick="myfunction(event, 'Change_Username')" id="usr">Change Username</button>
+  <button class="tablinks" onclick="myfunction(event, 'Change_Email')" id="eid">Change Email</button>
+  <button class="tablinks" onclick="myfunction(event, 'Change_Password')" id="pass">Change Password</button>
+  <button class="tablinks" onclick="document.getElementById('id01').style.display='block'">LogOut</button>
+</div>
+
+<div id="Home" class="tabcontent">
+    <h3>Notices</h3>
+        <ul>
+            <%
+            var body = '';
+            for (i = 0; i < notices.length; i++) 
+            {
+              body += '<button class="accordion">'+ notices[i].subject +'</button><div class="panel"><p>'+ notices[i].body +'<br><br>' ;
+                  if(notices[i].path!="")
+                  {
+                    var path="../";
+                    path+= notices[i].path.slice(28);
+                    body+= '<a href="'+ path + '">Click Here</a> to see Attachment.' ;
+                  }
+                  
+                  body+= '</p></div>';
+            }
+            %>
+            <%- body %>
+        </ul>
+  
+</div>
+
+
+
+
+<div id="Add" class="tabcontent">
+        <div class="form">
+        <form action="/users/upload1" method="post" enctype="multipart/form-data">
+        <div class="container1">
+          <h1>Enter Details</h1>
+          <p>Please fill in this form to submit your request.</p>
+          <hr>
+      
+          <label for="subject"><b>Subject</b></label>
+          <input type="text" placeholder="Enter Subject of the notice" name="subject" required>
+      
+          <label for="body"><b>Body</b></label>
+          <textarea name="body" rows=12 placeholder="Enter body of the notice" required></textarea>
+      
+          <label for="attachments"><b>Add attachments</b></label>
+          <input type="file" name="upload" multiple="multiple">
+          
+      
+          <div class="clearfix1">
+            <button type="submit" class="addreq">Add Rquest</button>
+          </div>
+        </div>
+      </form>
+      </div>
+      </div>
+      
+      
+      
+<div id="Change_Username" class="tabcontent">
+  <div class="form">
+    <form method="post" action="/changeUser">
+      <div class="container1">
+        <h1>Change Username</h1>
+        <p>Please fill in this form to change your Username</p>
+        <hr>
+        <label for="username"><b>Enter new Username</b></label>
+        <input type="text" placeholder="New Username" name="username" 
+          value="<%= typeof username!='undefined'? username:''  %>" required>
+        <span id="user" style="display: none;"></span>
+        <script>
+          if(code==2)
+              {
+                document.getElementById("user").innerHTML="Username already Taken! Try a different one.";
+                document.getElementById("user").style.display="";
+              }
+        </script>
+        <button type="submit">Change Username</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div id="Change_Email" class="tabcontent">
+    <div class="form">
+      <form method="post" action="/changeEmail">
+        <div class="container1">
+          <h1>Change Email-ID</h1>
+          <p>Please fill in this form to change your email-id</p>
+          <hr>
+          <label for="email"><b>Enter new Email-ID</b></label>
+          <input type="text" placeholder="New Email-ID" name="email" 
+            value="<%= typeof email!='undefined'? email:'' %>" required>
+          <span id="mail" style="display: none;"></span>
+          <script>
+              if(code==10)
+              {
+                document.getElementById("mail").innerHTML="Not a valid email-id!";
+                document.getElementById("mail").style.display="";
+              }
+              if(code==4)
+              {
+                document.getElementById("mail").innerHTML="Email id already registered!";
+                document.getElementById("mail").style.display="";
+              }
+          </script>
+          <button type="submit">Change Email-ID</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<div id="Change_Password" class="tabcontent">
+    <div class="form">
+      <form method="post" action="/changePass">
+        <div class="container1">
+          <h1>Change Password</h1>
+          <p>Please fill in this form to change your Password</p>
+          <hr>
+          <label for="oldPass"><b>Enter Old Password</b></label>
+          <input type="password" placeholder="Old Password" name="oldPass" 
+            value="<%= typeof password!='undefined'?password:'' %>" required>
+            <span id="oldPass" style="display: none;"></span>
+            <script>
+              if(code==6)
+              {
+                document.getElementById("oldPass").innerHTML="Wrong old password!";
+                document.getElementById("oldPass").style.display="";
+              }
+            </script>
+
+          <label for="newPass"><b>Enter New Password</b></label> 
+          <input type="password" placeholder="New Password" name="newPass" 
+            value="<%= typeof newPass!='undefined'?newPass:'' %>" required>
+            <span id="nPass" style="display: none;"></span>
+            <script>
+              if(code==8)
+              {
+                document.getElementById("nPass").innerHTML="New password is not a strong password";
+                document.getElementById("nPass").style.display="";
+              }
+            </script>  
+
+          <label for="confirmPass"><b>Confirm Password</b></label>
+          <input type="password" placeholder="Confirm Password" name="confirmPass" required>
+          <span id="conPass" style="display: none;"></span>
+            <script>
+              if(code==7)
+              {
+                document.getElementById("conPass").innerHTML="Password and confirm password did not match";
+                document.getElementById("conPass").style.display="";
+              }
+            </script>
+
+          <button type="submit">Change Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+
+
+
+      <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+            <form class="modal-content" action="/logout">
+              <div class="container2">
+                <h1>LogOut</h1>
+                <p>Are you sure you want to log out?</p>
+               
+          
+          
+                <div class="clearfix2">
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'"  class="cancel">Cancel</button>
+                  <button type="submit" class="logOut" style="background-color: #f44336 ;width:50%; float:right;">LogOut</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+
+</body>
+<script src="/javascripts/notices.js"></script>
+</html> 

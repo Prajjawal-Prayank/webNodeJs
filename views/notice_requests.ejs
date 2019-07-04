@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/stylesheets/notice_requests.css">
+
+<script>
+var code=<%= code %>;
+check(code);
+
+
+function check(code)
+{
+  if(code==1)
+    alert('Invalid Subject.Please retry with correct subject.');
+  if(code==2)
+    alert('Notice successfully deleted.'); 
+  if(code==3)
+    alert('Notice successfully moved.');   
+}
+</script>
+
+</head>
+<body>
+
+    <button id="back" onclick="window.location.replace('/admin')"><-Go Back</button>
+
+<div class="remove">   
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+  <form class="modal-content" id="dynamic1" method="post" action="/remove_request" > <!-- action="/remove_snotice" -->
+    <div class="container">
+      <h1>Remove Notice</h1>
+      <hr>
+      <label ><b>The notice with the subject :-</b></label>
+      <input type="text"  name="sub1" disabled>
+      <input type="text" name="subject1" style="display: none;">
+
+      <p><b>will be removed.</b><br><br>Once removed ,the notice will be deleted permanently!</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" 
+        style="background-color: #4CAF50 ;width:50%; " class="cancelbtn">Cancel</button>
+        <button type="submit" class="remove" style="background-color: #f44336 ;width:50%; float:right;">Remove</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+
+
+<div class="add_snotice">           
+    <div id="id02" class="modal">
+       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close">&times;</span>
+        <form class="modal-content" id="dynamic2" method="post" action="/move_snotice" > 
+        <div class="container">
+          <h1>Move to Student Notice</h1>
+          <hr>
+          <label ><b>The notice with the subject :-</b></label>
+          <input type="text"  name="sub2" disabled>
+          <input type="text" name="subject2" style="display: none;">
+
+          <p><b>will be moved to Student Notices section.</b><br><br>Click move to continue.</p>
+
+          <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" 
+            style="background-color: #4CAF50 ;width:50%; " class="cancelbtn">Cancel</button>
+          <button type="submit" class="add_snotice" style="background-color: #f44336 ;width:50%; float:right;">Move</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+        
+
+
+<div class="add_onotice">                   
+    <div id="id03" class="modal">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close">&times;</span>
+        <form class="modal-content" id="dynamic3" method="post" action="/move_onotice" > 
+          <div class="container">
+            <h1>Move to Other Notice</h1>
+            <hr>
+            <label ><b>The notice with the subject :-</b></label>
+            <input type="text"  name="sub3" disabled>
+            <input type="text" name="subject3" style="display: none;">
+
+            <p><b>will be moved to Other Notices section.</b><br><br>Click move to continue.</p>
+
+            <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" 
+              style="background-color: #4CAF50 ;width:50%; " class="cancelbtn">Cancel</button>
+            <button type="submit" class="add_onotice" style="background-color: #f44336 ;width:50%; float:right;">Move</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+                
+
+
+
+<div class="notices">
+  <h3><%= title %></h3>
+      <ul>
+          <%
+              var body = '';
+              for (i = 0; i < notices.length; i++) 
+              {
+                body += '<button class="accordion" id="'+i+'">'+ notices[i].subject +'</button><div class="panel"><p>'+ notices[i].body +'<br><br>' ;
+                    if(notices[i].path!="")
+                    {
+                        var path= notices[i].path.slice(28);
+                        body+= '<a href="'+ path + '">Click Here</a> to see Attachment.' ;
+                    }
+                    body+='<button  class="actr" onclick="display1('+i+')"  style="width:auto;right: 0px;float:right;">Remove Notice</button>';
+                    body+='<button  class="actm" onclick="display2('+i+')"  style="width:auto;right: 0px;float:right;">Move to Student Notice</button>';
+                    body+='<button  class="actm" onclick="display3('+i+')"  style="width:auto;right: 0px;float:right;">Move to Other Notice</button>';
+                    body+= '</p></div>';
+              }
+          %>
+          <%- body %>
+      </ul>
+</div>
+
+
+<script>
+
+var modal1 = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+}
+
+
+var modal2 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+
+
+var modal3 = document.getElementById('id03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal3) {
+    modal3.style.display = "none";
+  }
+}
+
+
+
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+
+function display1(i)
+{
+  document.getElementById('id01').style.display='block';
+  var id=i.toString();
+  dynamic1.sub1.value=document.getElementById(id).innerHTML;
+  dynamic1.subject1.value=document.getElementById(id).innerHTML;
+}
+
+
+
+function display2(i)
+{
+  document.getElementById('id02').style.display='block';
+  var id=i.toString();
+  dynamic2.sub2.value=document.getElementById(id).innerHTML;
+  dynamic2.subject2.value=document.getElementById(id).innerHTML;
+}
+
+
+function display3(i)
+{
+  document.getElementById('id03').style.display='block';
+  var id=i.toString();
+  dynamic3.sub3.value=document.getElementById(id).innerHTML;
+  dynamic3.subject3.value=document.getElementById(id).innerHTML;
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+    <link rel='stylesheet' href='/stylesheets/home.css' />
+  <!--  <script src="/javascripts/global.js"></script>-->
+   
+    <script>
+    var code=<%= code %>;
+    if(code==7)
+      alert("successful signup! You may login now.");
+    if(code==11)
+      alert("Your account was blocked by ADMIN.Contact ADMIN for more details on this matter.");   
+    </script>
+
+  </head>
+  <body>
+
+
+  <!--for top navigation bar-->  
+    <div class="topnav">
+        <div class="login-container">
+          <form action="/login" method="post">
+            <input type="text" placeholder="Username" id="l_username" name="l_username" 
+                value="<%= typeof Username !='undefined' ? Username:'' %>" required><span id="l_user" style="display: none;"></span>
+            &nbsp;
+            <script>
+                if(code==8)
+                {
+                  document.getElementById("l_user").innerHTML="Invalid Username!";
+                  document.getElementById("l_user").style.display="";
+                }
+            </script>
+            <input type="password" placeholder="Password" name="l_password" required><span id="l_pass" style="display: none;"></span>
+            &nbsp;&nbsp;
+            <script>
+                if(code==10)
+                {
+                  document.getElementById("l_pass").innerHTML="Wrong Password!";
+                  document.getElementById("l_pass").style.display="";
+                }
+            </script>  
+            <button type="submit">Login</button>
+          </form>
+        </div>
+
+  <!--Welcome-->
+    <div class="welcome">
+      <b>
+        <i>
+          <CENTER>
+              Notice Board 
+          </CENTER>
+        </i>
+     </b>
+    </div>
+
+      </div>
+
+
+
+
+<!--for signup-->
+      <div class="signup">
+          <form method="post" name="fsgnup" action="/signup" > <!--action="/signup" attr is removed-->
+              <div class="container">
+                <center><h2>Sign Up</h2>
+                <p>Please fill in this form to create an account.</p>
+              </center>
+                <hr>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="username" name="username" 
+                        value="<%= typeof username !='undefined' ? username:'' %>" required><span id="user" style="display: none;"></span><br>
+                        <script>if(code==5)
+                            {
+                              document.getElementById("user").innerHTML="Username already taken! Try a different one .";
+                              document.getElementById("user").style.display="";
+                            }
+                        </script>   
+            
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" id="email" name="email"
+                        value="<%= typeof email !='undefined' ? email:'' %>" required><span id="mail" style="display: none;"></span><br>
+                        <script>
+                            if(code==1)
+                            {
+                              document.getElementById("mail").innerHTML="Invalid email-id !";
+                              document.getElementById("mail").style.display="";
+                            }
+                            if(code==6)
+                            {
+                              document.getElementById("mail").innerHTML="Email_id is already registered!";
+                              document.getElementById("mail").style.display="";
+                            }
+                        </script>
+            
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="password" name="password" 
+                        value="<%= typeof password !='undefined' ? password:'' %>" required><span id="pass" style="display: none;"></span><br>
+                        <script>
+                            if(code==2)
+                            {
+                              document.getElementById("pass").innerHTML="Password must be atleast 8 characters long!";
+                              document.getElementById("pass").style.display="";
+                            }
+                            if(code==3)
+                            {
+                              document.getElementById("pass").innerHTML="Not a strong Password!";
+                              document.getElementById("pass").style.display="";
+                            }    
+                            if(code==4)
+                            {
+                              document.getElementById("pass").innerHTML="Password and confirm password do not match!";
+                              document.getElementById("pass").style.display="";
+                            }
+                        </script>
+            
+                <label for="confirm"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Repeat Password" id="confirm" name="confirm"
+                        value="<%= typeof confirm !='undefined' ? confirm:'' %>" required>
+            
+                <p>&nbsp;By creating an account you agree to our <a  style="color:dodgerblue">
+                  <div onclick="document.getElementById('id01').style.display='block'" style="cursor: pointer;">
+                    &nbsp;&nbsp;Terms & Privacy</div></a>.</p>
+            
+                <div class="clearfix">
+                  <button   type="submit" class="signupbtn">Sign Up</button> <!--onclick="authenticate(form)"-->
+                </div>
+              </div>
+            </form>
+
+      </div>
+
+      <div id="id01" class="modal">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+            <div class="container2">
+              <h1>Terms and Conditions:-</h1>
+              <p>Please read the Terms and Conditions carefully.</p>
+              <hr>
+              <ul>
+                  <li>You are solely responsible for protecting your own account password and other account information.</li>
+                  <li>Your account is liable to get deactivated if it reflects any kind of abusive behaviour. </li>
+                  <li>Your account is liable to get deactivated if it is used for spamming .</li>
+                  <li>Do not signup if you do not agree to the Terms described. Signing Up means you agree to these.</li>
+                  <li>In case of any unrest, the admin's decision will be final.</li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        
+
+
+  </body>
+</html>

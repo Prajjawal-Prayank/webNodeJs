@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="/stylesheets/admin_login.css"></link>
+  <script>
+    var code=<%= code %>;
+  //  check(code);
+    function check(code)
+    {
+    //  if(code==8)
+    //    alert("Invalid Username");
+      if(code==10)
+        alert('Wrong Password');
+    }
+  </script>
+
+</head>
+<body>
+  <div class="loginbox">
+    <img src="/images/avatar.png" class="avatar">
+    <h1>Admin Login</h1>
+    <form method="post" action="/admin_login">
+      <p>Username</p>
+      <input type="text" placeholder="Enter username" name="username"
+        value="<%= typeof Username!='undefined'? Username:''%>" required>
+      <span id="user" style="display:none;"></span>
+      <script>
+        if(code==8)
+              {
+                document.getElementById("user").innerHTML="Invalid Username";
+                document.getElementById("user").style.display="";
+              }
+      </script>
+      <p>Password</p>
+      <input type="password" placeholder="Enter Password" name="password" required>
+      <span id="pass" style="display:none;"></span>
+      <script>
+        if(code==10)
+              {
+                document.getElementById("pass").innerHTML="Wrong Password";
+                document.getElementById("pass").style.display="";
+              }
+      </script>
+      <br><br><br>
+      <input type="submit" name="button" value="Login">
+    </form>
+  </div>
+</body>
+</head>
+</html>
